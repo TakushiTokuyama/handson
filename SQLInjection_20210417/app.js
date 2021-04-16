@@ -16,7 +16,7 @@ var result = function (req, res) {
         console.info('dbconnection');
         db.serialize(() => {
             //console.log(escape(qsdata.id));
-            db.all(`SELECT * FROM User WHERE Id = ${qsdata.id} AND Password = ${qsdata.password}`, function (err, rows) {
+            db.all(`SELECT * FROM User WHERE Id = ? AND Password = ?`, [qsdata.id, qsdata.password], function (err, rows) {
                 if (rows === undefined) {
                     res.end(page.error());
                 }
