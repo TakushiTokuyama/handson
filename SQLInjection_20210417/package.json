@@ -1,0 +1,15 @@
+{
+  "name": "sqlinjection",
+  "version": "1.0.0",
+  "description": "SQLAttack!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Takushi Tokuyama",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "sqlite3": "^5.0.2"
+  }
+}
