@@ -1,5 +1,5 @@
 # 発表内容
-サーバーとは？Node.jsで立ててみる①
+Node.jsでhttpメソッド① GETとPOST
 ## 発表日時
 20210429 07:00-07:25
 
@@ -7,4 +7,4 @@
 主催する勉強会
 
 ## 発表内容
-[発表用資料](https://tokuty.hatenablog.com/entry/2021/04/29/Node.jsでhttpメソッド①)
+[発表用資料](https://tokuty.hatenablog.com/entry/2021/04/29/Node.jsでhttpメソッド)
