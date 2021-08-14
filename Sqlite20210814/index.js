@@ -30,7 +30,7 @@ users.forEach((user, index) => {
     )
 
     fs.appendFile("insert.txt", insertSql, (error) => {
-        if (errpr) throw err;
+        if (error) throw err;
     });
 })
 
