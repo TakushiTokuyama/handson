@@ -15,29 +15,36 @@ let users = new Array()
 
 // users
 for (var i = 0; i < 400; i++) {
-    users.push(new UserModel.User(i, i, i, i))
+    users.push(new UserModel.User(i, i, i, i + i))
 }
 
-// INSERT ALL
-users.forEach((user, index) => {
+// db呼び出し
+var db = DbSetting.DbCommon.getDb()
 
-    var insertSql = `insert or replace into user 
+var insertSql = `insert into user 
         (firstName, lastName, fullName)
-        values (${user.firstName}, ${user.lastName}, ${user.fullName})`
+        values (? ,? ,?)`
 
-    DbSetting.DbCommon.getDb().run(
-        insertSql
-    )
+var stmt = db.prepare(insertSql)
 
-    fs.appendFile("insert.txt", insertSql, (error) => {
-        if (error) throw err;
+// INSERT ALL
+users.forEach((user) => {
+
+    stmt.run(`${user.firstName}`, `${user.lastName}`, `${user.fullName}`);
+
+    fs.appendFileSync("insert.txt", `firstName:${user.firstName} lastName:${user.lastName} fullName:${user.fullName}\n`, (err) => {
+        if (err) throw err;
     });
 })
 
-// ALL COUNT
-DbSetting.DbCommon.getDb().get(`select count(*) from user`, (err, row) => {
-    if (err) {
-        console.log(error)
-    }
-    console.log(row["count(*)"])
-})
+stmt.finalize(() => {
+    // ALL COUNT
+    db.get(`select count(*) from user`, (err, row) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(row["count(*)"])
+        }
+    })
+});
+

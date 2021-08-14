@@ -15,7 +15,7 @@ exports.DbCommon = class DbCommon {
         db.serialize(() => {
             // CreateTableUser
             let CREATE_TABLE_USER = 'CREATE TABLE IF NOT EXISTS User'
-                + '(userId NUMBER AUTO INCREMENT PRIMARY KEY,'
+                + '(userId INTEGER PRIMARY KEY AUTOINCREMENT,'
                 + 'firstName TEXT NOT NULL,'
                 + 'lastName TEXT NOT NULL,'
                 + 'fullName TEXT NOT NULL)'
