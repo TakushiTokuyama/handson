@@ -1,13 +1,13 @@
 // object
 // 1つの物を表現するために複数の属性情報を持つ
 
-var book = {
-    name:'ジャンプ',
-    price:300,
-    '数':1,
+var jump = {
+    name:'ワンピース',
+    page:5,
+    count:0,
     '月間　売り上げ':1000,
-    pageCount(){
-        console.log(this.数++)  
+    readCount(){
+        return this.count++;
     },
     func:function(){
         function showName(){
@@ -16,23 +16,18 @@ var book = {
         }
         showName()
         // showName.call(this)
-        let showPrice = () => {
-            console.log(this.price)
+        let showPage = () => {
+            console.log(this.page)
         }
-        showPrice()
+        showPage()
     },
 }
 
-book.func()
-book.pageCount()
-console.log(book.数)
-console.log(book["月間　売り上げ"])
+jump.func()
+jump.readCount()
+console.log(jump["月間　売り上げ"])
 
-console.log('name' in book)
-
-for (item in book){
-    console.log(item)
-}
+console.log('name' in jump)
 
 // keyが数値の場合はsortされる
 var numbers = {
@@ -44,6 +39,8 @@ var numbers = {
 console.log(numbers)
 
 // 参照
-var jump = book
-jump.数++
+var book = jump
+book.page = 10
 console.log(book)
+
+
